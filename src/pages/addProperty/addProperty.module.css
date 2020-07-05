@@ -1,0 +1,108 @@
+.cotainer__addProperty_inner {
+	position: relative;
+	width: 100%;
+	margin: 24px auto;
+	min-height: 754px;
+	max-width: 1110px;
+	background-color: #ffffff;
+	box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.07);
+	border-radius: 10px;
+	padding: 24px 95px;
+}
+
+.cotainer__addProperty_inner input {
+	width: 255px;
+	height: 32px;
+	padding: 16px 7px;
+	margin-top: 8px;
+	background: #ffffff;
+	border: 1px solid #e8e8e8;
+	border-radius: 4px;
+}
+
+.cotainer__addProperty_inner input::placeholder {
+	color: #e8e8e8;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.cotainer__addProperty_inner h3 {
+    margin-top: 97px;
+}
+
+.input_row {
+  display: flex;
+  flex-direction: column;
+}
+
+.addProperty__input_label {
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+  opacity: 0.8;
+}
+
+.addProperty__input_label span {
+  color: #ff0000;
+}
+
+.addItem__input_label {
+	font-size: 14px;
+	line-height: 16px;
+	color: #000;
+	opacity: 0.8;
+}
+
+.addItem__input_label span {
+	color: #ff0000;
+}
+
+.nav_btn__container {
+  position: absolute;
+  top: 24px;
+  right: 96px;
+  max-width: 350px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav_btn__container button[type="submit"] {
+	width: 160px;
+	height: 32px;
+	box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.05);
+	background: #34c15c;
+	border-radius: 4px;
+	border: none;
+	font-size: 16px;
+	line-height: 32px;
+	color: #ffffff;
+	outline: none;
+	cursor: pointer;
+}
+
+.nav_btn__container .nav_btn {
+	width: 160px;
+	height: 32px;
+	box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.05);
+	background: #34c15c;
+	border-radius: 4px;
+	border: none;
+	font-size: 16px;
+	line-height: 32px;
+	color: #ffffff;
+	outline: none;
+	cursor: pointer;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	line-height: 32px;
+}
+
+.nav_btn__container .nav_btn:first-child {
+	background: #ff0000;
+}
+
+.has_error {
+  border-color: red !IMPORTANT; /*обводка формы*/
+}

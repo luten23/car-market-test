@@ -1,0 +1,11 @@
+.form_message__valid {
+  font-size: 10px;
+  margin-bottom: 4px;
+  color: green;
+}
+
+.form_message__invalid {
+  font-size: 10px;
+  margin-bottom: 4px;
+  color: red;
+}

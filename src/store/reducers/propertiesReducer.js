@@ -2,7 +2,7 @@ const initialState = {
   properties: []
 }
 
-const propertiesReducer = (state = initialState, action) => {
+export const propertiesReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_ALL_PROPERTIES":
       return { ...state, properties: action.payload };
@@ -10,5 +10,3 @@ const propertiesReducer = (state = initialState, action) => {
       return state;
   }
 }
-
-export default propertiesReducer

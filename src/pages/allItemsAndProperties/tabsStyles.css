@@ -1,0 +1,30 @@
+.MuiBox-root {
+	padding: 0 !important;
+}
+
+.Mui-selected {
+	background: linear-gradient(180deg, #acc8ff 0%, rgba(2, 88, 255, 0) 100%) !important;
+	color: #0258ff !important;
+}
+
+.MuiTab-root {
+	text-transform: none !important;
+	font-size: 22px !important;
+	font-weight: 300 !important;
+	opacity: 1;
+	min-width: 256px !important;
+	height: 60px !important;
+}
+
+.MuiTabs-indicator {
+	background-color: #0258ff !important;
+	top: 0 !important;
+}
+
+.MuiTab-textColorInherit {
+	opacity: 1 !important;
+} 
+
+.MuiPaper-root {
+	box-shadow: 0px 20px 20px rgba(40, 40, 40, 0.05) !important;
+}

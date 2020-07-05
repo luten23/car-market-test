@@ -1,0 +1,116 @@
+.container {
+  display: flex;
+	height: 100vh;
+	min-height: 550px;
+	justify-content: center;
+	align-items: center;
+}
+
+.registration__block {
+  min-height: 550px;
+  width: 350px;
+  background-color: #ffffff;
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  padding: 24px 16px;
+}
+
+.registration__block h1 {
+	text-align: center;
+	margin-top: 0;
+  margin-bottom: 48px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+} 
+
+.reg__btn {
+  margin: 0 auto;
+  display: block;
+  background: #ffb800;
+  border-radius: 4px;
+  border: none;
+	width: 200px;
+  height: 32px;
+  margin-top: 8px;
+  color: #fff;
+  outline: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  cursor: pointer;
+}
+
+.registration__block label {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  color: #828282;
+  margin: 0px;
+}
+
+.registration__block input {
+  width: 318px;
+  height: 32px;
+  padding: 6px 16px;
+  margin-top: 8px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.registration__block input::placeholder {
+  color: #e8e8e8;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.back__btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  color: #0258ff;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.input_row {
+  display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.eye_btn,
+.eye_btn_pressed {
+	position: absolute;
+	font-size: 20px;
+	left: 288px;
+  top: 28px;
+	color: #0258ff;
+	background: none;
+	border: none;
+	outline: none;
+}
+
+.eye_btn {
+	color: #dddddd !important; 
+}
+
+.eye_btn::before {
+	content: "\e907";
+	font-family: "icomoon" !important;
+}
+
+.eye_btn_pressed::before {
+	content: "\e906";
+	font-family: "icomoon" !important;
+}
+
+.has_error {
+  border-color: red !IMPORTANT; /*обводка формы*/
+}

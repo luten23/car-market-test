@@ -1,14 +1,14 @@
 const initialState = {
 	itemInfo: {
 		name: '',
-		price: null,
+		price: '',
 		date: '',
 		description: '',
 		id: null
 	}
 }
 
-const itemCardDataReducer = (state = initialState, action) => {
+export const itemCardDataReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case 'GET_ITEM_CARD_DATA':
 			return { ...state, itemInfo: action.payload };
@@ -18,5 +18,3 @@ const itemCardDataReducer = (state = initialState, action) => {
 			return state;
 	}
 }
-
-export default itemCardDataReducer

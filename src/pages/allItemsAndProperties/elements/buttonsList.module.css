@@ -1,0 +1,22 @@
+
+.del__btn {
+  display: inline;
+  color: #0258ff;
+  font-size: 14px;
+  text-decoration: underline;
+  border: none;
+  cursor: pointer;
+	outline: none;
+	background-color: transparent;
+}
+
+.listBtns__container {
+  display: flex;
+	justify-content: space-between;
+	padding-right: 60px;
+}
+
+.properyListDelBtn__container {
+  display: flex;
+  justify-content: center;
+}

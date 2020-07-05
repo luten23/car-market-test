@@ -1,0 +1,125 @@
+.itemCard__container {
+	width: 100%;
+	margin: 72px auto;
+  min-height: 754px;
+  max-width: 1110px;
+  background-color: #ffffff;
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  padding: 24px 95px;
+}
+
+.back__btn {
+  display: block;
+  color: #0258ff;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 48px;
+}
+
+.line__line {
+  width: 100%;
+  height: 1px;
+  background: #e8e8e8;
+  margin-bottom: 24px;
+}
+
+img {
+  max-width: 350px;
+  max-height: 190px; 
+  display: block;
+  margin-right: 30px;
+}
+
+.itemCard__discription {
+  display: flex;
+}
+
+.itemCard__discription_text {
+  width: 100%;
+}
+
+.itemCard__discription_text h1 {
+  text-align: left;
+  margin: 0;
+	margin-bottom: 40px;
+	font-weight: normal;
+	font-size: 24px;
+}
+
+.itemCard__discription_text p {
+  font-size: 16px;
+  line-height: 19px;
+  color: #828282;
+}
+
+h3 {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 19px;
+  color: #828282;
+}
+
+.price {
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  color: #000;
+}
+
+.itemCard__container form p select {
+  height: 32px;
+  min-width: 255px;
+  font-size: 14px;
+  line-height: 32px;
+  color: #828282;
+  padding-left: 8px;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  appearance: none;
+  outline: none;
+}
+
+.select__p {
+  position: relative;
+}
+
+.select__p:after {
+  content: "\e900";
+  font-family: "icomoon" !important;
+  position: absolute;
+  font-size: 20px;
+  line-height: 32px;
+  left: 230px;
+  color: #0258ff;
+  pointer-events: none;
+}
+
+.itemCard__container form p select option {
+  font-size: 14px;
+  line-height: 32px;
+  color: #828282;
+  padding: 8px 0;
+}
+
+.buy__btn input {
+  margin: 0 auto;
+  display: block;
+  background: #ffb800;
+  border-radius: 4px;
+  border: none;
+  width: 160px;
+  height: 32px;
+  margin-top: -58px;
+  color: #fff;
+  outline: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+}

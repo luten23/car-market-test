@@ -1,10 +1,8 @@
-import Cookies from "js-cookie"
-
 const initialState = {
-  isAuth: !!Cookies.get("vasya")
+  isAuth: !!localStorage.getItem("authorization_token")
 }
 
-const authReducer = (state = initialState, action) => {
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SIGN_IN":
       return { ...state, isAuth: action.payload };
@@ -12,5 +10,3 @@ const authReducer = (state = initialState, action) => {
       return state;
   }
 }
-
-export default authReducer

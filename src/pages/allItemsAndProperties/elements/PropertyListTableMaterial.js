@@ -11,15 +11,13 @@ import TablePagination from "@material-ui/core/TablePagination"
 import TableRow from "@material-ui/core/TableRow"
 import TableSortLabel from "@material-ui/core/TableSortLabel"
 import Paper from "@material-ui/core/Paper"
-import { Link } from "react-router-dom"
-import ItemListButtons from "../../../elements/ItemListButtons"
-import { getAllItems } from "../../../store/actions"
+import { ProperyListDelBtn } from "./ProperyListDelBtn"
+import { getAllProperties } from "../../../store/actions"
 import { useDispatch, useSelector } from "react-redux"
 
-// локализация
+//локализация
 const theme = createMuiTheme(ruRU)
 
-// для сортировки ?по убыванию
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -47,9 +45,8 @@ function getSorting(order, orderBy) {
 }
 
 const headCells = [
-  { id: "name", numeric: false, disablePadding: false, label: "Перечень товаров" },
-  { id: "price", numeric: true, disablePadding: false, label: "Стоимость" },
-  { id: "date", numeric: true, disablePadding: false, label: "Дата изменения" },
+  { id: "name", numeric: false, disablePadding: false, label: "Перечень проперти" },
+  { id: "type", numeric: true, disablePadding: false, label: "Тип" },
   { id: "controlBtns", numeric: true, disablePadding: false, label: "Управление" }
 ];
 
@@ -121,22 +118,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ItemListTableMaterial( {searchReq} ) {
+export function PropertyListTableMaterial() {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("price");
+  const [orderBy, setOrderBy] = React.useState("type");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-	const rows = useSelector(state => state.items.items) //получение item'ов из state
+	const rows = useSelector(state => state.properties.properties) //получение проперти из state
 
 	const dispatch = useDispatch()
 
-	//запрос списка item'ов в state (1 раз)
+	//запрос списка проперти в state (1 раз)
 	React.useEffect(() => {
 			if (rows.length === 0){
-		dispatch(getAllItems())}
+		dispatch(getAllProperties())}
 	})
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -155,6 +153,7 @@ export default function ItemListTableMaterial( {searchReq} ) {
 
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
 
   return (
     <div className={classes.root}>
@@ -186,12 +185,9 @@ export default function ItemListTableMaterial( {searchReq} ) {
                       tabIndex={-1}
                       key={row.id}
                     >
-                      <TableCell component="th" id={labelId} scope="row">
-                        <Link className="listName__link" to={"/items/" + row.id}>{row.name}</Link>
-                      </TableCell>
-                      <TableCell align="center">{row.price}<span> $</span></TableCell>
-                      <TableCell align="center">{row.date.substr(8, 2)}.{row.date.substr(5, 2)}.{row.date.substr(2, 2)}</TableCell>
-                      <TableCell align="center"><ItemListButtons id={row.id} deleteCallback={()=>{dispatch(getAllItems())}} /></TableCell>
+                      <TableCell style={{paddingLeft: "66px"}} component="th" id={labelId} scope="row">{row.name}</TableCell>
+                      <TableCell align="center">{row.type}</TableCell>
+                      <TableCell align="left"><ProperyListDelBtn id={row.id} /></TableCell>
                     </TableRow>
                   );
                 })}

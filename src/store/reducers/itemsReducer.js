@@ -2,7 +2,7 @@ const initialState = {
   items: []
 }
 
-const itemsReducer = (state = initialState, action) => {
+export const itemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_ALL_ITEMS":
       return { ...state, items: action.payload };
@@ -10,5 +10,3 @@ const itemsReducer = (state = initialState, action) => {
       return state;
   }
 }
-
-export default itemsReducer
