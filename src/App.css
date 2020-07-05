@@ -7,12 +7,15 @@
   height: 100%;
   display: flex;
   margin: 0 auto;
-  margin-bottom: 80px;
+	/* margin-bottom: 80px; */
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
 }
 
 .login__block {
-  margin: auto;
-  margin-top: 16%;
+  /* margin: auto;
+  margin-top: 16%; */
   min-height: 350px;
   width: 336px;
   background-color: #ffffff;
@@ -239,8 +242,8 @@ p {
   cursor: pointer;
   font-size: 22px;
   line-height: 60px;
-  margin-top: 0;
-  margin-bottom: 14px;
+  margin-top: 52px;
+  /* margin-bottom: 14px; */
 }
 
 .tab-list-item {

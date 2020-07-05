@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
-import cogoToast from 'cogo-toast';
-import Error from "../elements/Error";
-import Cookies from 'js-cookie'
+import React from "react"
+import { Link } from "react-router-dom"
+import { Formik } from "formik"
+import * as Yup from "yup"
+import axios from "axios"
+import cogoToast from "cogo-toast"
+import Error from "../../elements/Error"
+import Cookies from "js-cookie"
 import { useDispatch } from "react-redux"
-import { authorization } from "../actions"
+import { authorization } from "../../store/actions"
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string()
@@ -17,12 +17,12 @@ const validationSchema = Yup.object().shape({
 	password: Yup.string()
 		.required("Необходимо указать пароль")
 		.max(255, "Пароль должен быть не более 255 символов")
-		.min(8, 'Пароль должен быть мимнимум из 8 символов')
-});
+		.min(8, "Пароль должен быть мимнимум из 8 символов")
+})
 
 function Login() {
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
 
 	return (
 		<div className="login__block">
@@ -38,11 +38,11 @@ function Login() {
 						.then(response => {
 							const token = response.data.access_token
 							axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-							Cookies.set('vasya', token)
+							Cookies.set("vasya", token)
 							//window.location.reload();
 							dispatch(authorization(true))
 						}).catch(function (error) {
-							cogoToast.error("Авторизация не удалась!", {/*position: 'bottom-center'*/ });
+							cogoToast.error("Авторизация не удалась!");
 						});
 				}}
 			>

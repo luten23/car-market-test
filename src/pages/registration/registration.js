@@ -1,14 +1,14 @@
-import React from "react";
+import React from "react"
 import { Link //, useHistory 
-} from "react-router-dom";
-import cogoToast from 'cogo-toast';
-import { Formik } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
-import Error from "../elements/Error";
+} from "react-router-dom"
+import cogoToast from 'cogo-toast'
+import { Formik } from "formik"
+import * as Yup from "yup"
+import axios from "axios"
+import Error from "../../elements/Error"
 import Cookies from 'js-cookie'
 import { useDispatch } from "react-redux"
-import { authorization } from "../actions"
+import { authorization } from "../../store/actions"
 
 const validationSchema = Yup.object().shape({
 	name: Yup.string()
@@ -28,11 +28,11 @@ const validationSchema = Yup.object().shape({
 	passwordConfirmation: Yup.string()
 		.required("Необходимо указать пароль ещё раз")
 		.oneOf([Yup.ref('password'), null], 'Пароль должен совпадать')
-});
+})
 
 function Registration() {
-	//let history = useHistory();
-	const dispatch = useDispatch();
+	//let history = useHistory()
+	const dispatch = useDispatch()
 
 	return (
 		<div className="login__block">
@@ -47,7 +47,7 @@ function Registration() {
 						password: values.password
 					})
 						.then(response => {
-							cogoToast.success("Регистрация успешна!", {/*position: 'bottom-center'*/ });
+							cogoToast.success("Регистрация успешна!")
 							//history.push("/");
 							const token = response.data.access_token
 							axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -56,7 +56,7 @@ function Registration() {
 							dispatch(authorization(true))
 						})
 						.catch(function (error) {
-							cogoToast.error("Регистрация не удалась!", {/*position: 'bottom-center'*/ });
+							cogoToast.error("Регистрация не удалась!")
 							//console.log(error);
 						});
 				}}
@@ -134,13 +134,8 @@ function Registration() {
 							/>
 							<Error touched={touched.passwordConfirmation} message={errors.passwordConfirmation} />
 						</div>
-
-
 						<button className="login__btn regreg" type="submit" disabled={isSubmitting}>Зарегестрироваться</button>
-						<Link className="reg__btn" to="/login">
-							Вернуться
-      </Link>
-
+						<Link className="reg__btn" to="/login">Вернуться</Link>
 					</form>
 				)}
 			</Formik>

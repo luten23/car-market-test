@@ -1,33 +1,31 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
-import "../styles/icomoon-style.css";
+import React from "react"
+import { Link, useParams } from "react-router-dom"
+import "../../styles/icomoon-style.css"
+import { getItemCardData } from "../../store/actions"
+import { useDispatch, useSelector } from "react-redux"
 
 function ItemCard() {
-  let { id } = useParams();
-  const [itemInfo, setItemInfo] = React.useState();
+	let { id } = useParams()
+	const [dataRecived, setDataRecived] = React.useState(false)
+	const dispatch = useDispatch()
 
-  React.useEffect(() => {
-    if (!itemInfo) {
-      axios.get(`${process.env.REACT_APP_API_SERVER_URL}item/` + id).then(response => {
-        setItemInfo(response.data);
-      });
+    if (dataRecived === false) { 
+			dispatch(getItemCardData(id))
+      setDataRecived(true)
     }
-  });
 
-  // console.log("ID =", id);
-  // console.log("itemInfo =", itemInfo);
+	const itemInfo = useSelector(state => state.itemInfo.itemInfo)
 
   return (
     <div className="ItemCard__inner">
       <Link className="back__btn" to="/itemsandproperty">
         Вернуться
       </Link>
-      {itemInfo && (
+      {/* {dataRecived && ( */}
         <div>
           <div className="line__line"></div>
           <div className="ItemCard__discription">
-            <img src={require("./../images/item-img.png")} alt="тварь" />
+            <img src={require("../../images/item-img.png")} alt="itemImage" />
             <div className="ItemCard__discription-text">
               <h1>{itemInfo.name}</h1>
               <p>{itemInfo.description}</p>
@@ -53,7 +51,7 @@ function ItemCard() {
             </p>
           </form>
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 }

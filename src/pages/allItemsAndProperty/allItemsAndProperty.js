@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import ItemListTableMaterial from "./../elements/ItemListTableMaterial";
-import PropertyListTableMaterial from "./../elements/PropertyListTableMaterial";
+import React from "react"
+import { Link } from "react-router-dom"
+import ItemListTableMaterial from "./elements/ItemListTableMaterial"
+import PropertyListTableMaterial from "./elements/PropertyListTableMaterial"
 
-import Tabs from "../elements/Tabs";
+import Tabs from "../../elements/Tabs";
 
 function AllItemsAndProperty() {
 
-	const initialFormState = { searchReq: '' }
+	const initialFormState = { searchReq: "" }
 	// используем useState и передаем в качестве начального значения объект - initialFormState
 	const [searchReq, setSearchReq] = React.useState(initialFormState)
 

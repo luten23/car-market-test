@@ -1,8 +1,8 @@
-import Cookies from "js-cookie";
+import Cookies from "js-cookie"
 
 const initialState = {
   isAuth: !!Cookies.get("vasya")
-};
+}
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,6 +11,6 @@ const authReducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
+}
 
-export default authReducer;
+export default authReducer

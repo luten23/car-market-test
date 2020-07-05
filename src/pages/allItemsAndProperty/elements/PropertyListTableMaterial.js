@@ -1,29 +1,23 @@
-import React from "react";
-import axios from "axios";
-import PropTypes from "prop-types";
-import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { ruRU } from '@material-ui/core/locale';
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
-import TableRow from "@material-ui/core/TableRow";
-import TableSortLabel from "@material-ui/core/TableSortLabel";
-import Paper from "@material-ui/core/Paper";
-import { Link } from "react-router-dom";
-import ListButtons from "./listButtons"
+import React from "react"
+import PropTypes from "prop-types"
+import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core/styles"
+import { ruRU } from "@material-ui/core/locale"
+import Table from "@material-ui/core/Table"
+import TableBody from "@material-ui/core/TableBody"
+import TableCell from "@material-ui/core/TableCell"
+import TableContainer from "@material-ui/core/TableContainer"
+import TableHead from "@material-ui/core/TableHead"
+import TablePagination from "@material-ui/core/TablePagination"
+import TableRow from "@material-ui/core/TableRow"
+import TableSortLabel from "@material-ui/core/TableSortLabel"
+import Paper from "@material-ui/core/Paper"
+import ProperyListDelBtn from "../../../elements/ProperyListDelBtn"
+import { getAllProperties } from "../../../store/actions"
+import { useDispatch, useSelector } from "react-redux"
 
-// локализация
-const theme = createMuiTheme(ruRU);
+//локализация
+const theme = createMuiTheme(ruRU)
 
-// заполняет массив данными (информация о товаре)
-function createData(id, name, price, date, controlBtns) {
-  return { id, name, price, date, controlBtns };
-}
-
-// для сортировки ?по убыванию
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -51,9 +45,8 @@ function getSorting(order, orderBy) {
 }
 
 const headCells = [
-  { id: "name", numeric: false, disablePadding: false, label: "Перечень товаров" },
-  { id: "price", numeric: true, disablePadding: false, label: "Стоимость" },
-  { id: "date", numeric: true, disablePadding: false, label: "Дата изменения" },
+  { id: "name", numeric: false, disablePadding: false, label: "Перечень проперти" },
+  { id: "type", numeric: true, disablePadding: false, label: "Тип" },
   { id: "controlBtns", numeric: true, disablePadding: false, label: "Управление" }
 ];
 
@@ -69,7 +62,7 @@ function EnhancedTableHead(props) {
         {headCells.map(headCell => (
           <TableCell
             key={headCell.id}
-            align="center"
+            //align="center"
             padding={headCell.disablePadding ? "none" : "default"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -125,35 +118,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ItemListTableMaterial( {searchReq} ) {
+export default function PropertyListTableMaterial() {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("price");
+  const [orderBy, setOrderBy] = React.useState("type");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [rows, setRows] = React.useState([]);
-  //const [numberOfRows, setNumberOfRows] = React.useState(0);
 
-  React.useEffect(() => { //утечка памяти...
+	const rows = useSelector(state => state.properties.properties) //получение проперти из state
 
-      //if (rows.length === 0) {
-      axios.get(`${process.env.REACT_APP_API_SERVER_URL}item?name_like=${searchReq.searchReq}&_page=`)
-      .then(response => {
-        const data = response.data;
-        const rows = [];
-        // eslint-disable-next-line array-callback-return
-        data.map((item) => {
-          rows.push(createData(item.id, item.name, item.price, item.date));
-        });
+	const dispatch = useDispatch()
 
-        setRows(rows);
-        //console.log(rows)
-      })
-      .catch((err)=>{
-      })
-   // }
-  }, [searchReq, page , rows
-  ]);
+	//запрос списка проперти в state (1 раз)
+	React.useEffect(() => {
+			if (rows.length === 0){
+		dispatch(getAllProperties())}
+	})
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -172,6 +153,7 @@ export default function ItemListTableMaterial( {searchReq} ) {
 
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
 
   return (
     <div className={classes.root}>
@@ -203,13 +185,10 @@ export default function ItemListTableMaterial( {searchReq} ) {
                       tabIndex={-1}
                       key={row.id}
                     >
-                      <TableCell component="th" id={labelId} scope="row">
-                        <Link className="listName__link" to={"/items/" + row.id}>{row.name}</Link>
+                      <TableCell component="th" id={labelId} scope="row">{row.name}
                       </TableCell>
-                      <TableCell align="center">{row.price}<span> $</span></TableCell>
-                      <TableCell align="center">{row.date.substr(8, 2)}.{row.date.substr(5, 2)}.{row.date.substr(2, 2)}</TableCell>
-                      {/* <TableCell align="center">{row.date}</TableCell> */}
-                      <TableCell align="center"><ListButtons id={row.id} deleteCallback={(id)=>{setRows([])}} /></TableCell>
+                      <TableCell align="left">{row.type}</TableCell>
+                      <TableCell align="left"><ProperyListDelBtn id={row.id} deleteCallback={(id)=>{dispatch(getAllProperties())}} /></TableCell>
                     </TableRow>
                   );
                 })}
@@ -224,7 +203,6 @@ export default function ItemListTableMaterial( {searchReq} ) {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          //count={numberOfRows}
           count={rows.length}
           rowsPerPage={rowsPerPage}
           page={page}

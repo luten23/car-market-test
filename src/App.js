@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
-import Login from "./pages/login";
-import Registration from "./pages/registration";
-import ItemCard from "./pages/ItemCard";
-import AllItemsAndProperty from "./pages/allItemsAndProperty";
-import AddItem from "./pages/addItem";
-import AddProperty from "./pages/addProperty";
+import Login from "./pages/login/login";
+import Registration from "./pages/registration/registration";
+import ItemCard from "./pages/itemCard/ItemCard";
+import AllItemsAndProperty from "./pages/allItemsAndProperty/allItemsAndProperty";
+import AddItem from "./pages/addItem/addItem";
+import AddProperty from "./pages/addProperty/addProperty";
 import axios from "axios"
 import Cookies from 'js-cookie'
 import { useSelector } from "react-redux"
